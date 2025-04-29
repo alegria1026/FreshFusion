@@ -2,6 +2,10 @@
 
 import { useState } from 'react';
 import styles from './ProductCarousel.module.css';
+import Meat from "./meat-veggies.png"
+import Yogurt from "./yogurt.png"
+import Hummus from "./hummus.png"
+import Chips from "./veggie-chips.png"
 
 function ProductCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -13,34 +17,34 @@ function ProductCarousel() {
       id: 1,
       title: 'Kits de comida saludable',
       subtitle: 'Nuestra opción más saludable',
-      image: '/images/meat-veggies.jpg',
+      image: Meat,
       link: '/productos/meat-veggies',
     },
     {
       id: 2,
       title: 'Yogurt natural con fruta',
       subtitle: 'Refrescante y natural',
-      image: '/images/yogurt.jpg',
+      image: Yogurt,
       link: '/productos/yogurt',
     },
     {
       id: 3,
       title: 'Chips de verduras',
       subtitle: 'Crujientes y deliciosos',
-      image: '/images/veggie-chips.jpg',
+      image: Chips,
       link: '/productos/chips-verduras',
     },
     {
       id: 4,
       title: 'Hummus de garbanzo',
       subtitle: 'El sabor perfecto',
-      image: '/images/hummus.jpg',
+      image: Hummus,
       link: '/productos/hummus',
     },
   ];
 
   const totalSlides = products.length;
-  const visibleSlides = 1; // Cambié esto a 1, ya que solo quieres mostrar una imagen por vez
+  const visibleSlides = 1; 
 
   // Función para manejar el inicio del toque
   const handleTouchStart = (e) => {
@@ -79,7 +83,7 @@ function ProductCarousel() {
 
   return (
     <section className={styles.wrapper}>
-      <h2 className={styles.title}>Destacados de Producto</h2>
+      <h2 className={styles.title}>PRODUCTOS DESTACADOS</h2>
 
       <div
         className={styles.carouselContainer}
@@ -123,7 +127,7 @@ function ProductCarousel() {
               <a href={product.link} className={styles.productLink}>
                 <div className={styles.imageContainer}>
                   <img
-                    src={product.image}
+                    src={product.image.src}
                     alt={product.title}
                     className={styles.productImage}
                   />
@@ -137,7 +141,6 @@ function ProductCarousel() {
           ))}
         </div>
 
-        {/* Botón para ir al siguiente slide */}
         <button
           className={`${styles.arrowButton} ${styles.rightArrow}`}
           onClick={nextSlide}

@@ -1,14 +1,13 @@
 .wrapper {
     padding: 2rem;
-    background-color: #FFFFFF; /* fondo principal */
-    color: #333333;
+    background-color: #FFFFFF; 
 }
 
 .title {
     font-size: 2.5rem;
-    font-weight: 700;
-    color: #208C3C; /* título con color primario */
-    margin-bottom: 3rem;
+    font-weight: bold;
+    color: #208C3C; 
+    margin-bottom: 2rem;
     text-align: center;
     text-transform: uppercase;
 }
@@ -30,7 +29,7 @@
 }
 
 .card {
-    background-color: #EFFBEE; /* fondo de realce */
+    background-color: #EFFBEE; 
     border-radius: 12px;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
     padding: 2rem;
@@ -40,7 +39,7 @@
     display: flex;
     flex-direction: column;
     text-align: center;
-    border: 1px solid #dcefdc; /* tono más claro para borde */
+    border: 1px solid #dcefdc; 
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -52,7 +51,7 @@
 .subtitle {
     font-size: 1.25rem;
     font-weight: 600;
-    color: #208C3C; /* subtítulo con color primario */
+    color: #208C3C; 
     margin-top: 1rem;
     margin-bottom: 0.5rem;
 }
@@ -66,13 +65,13 @@
 .icon {
     width: 50px;
     height: 50px;
-    color: #6CC142; /* color secundario en íconos */
+    color: #6CC142;
 }
 
 .cardText {
     font-size: 1rem;
     line-height: 1.5;
-    color: #333333; /* texto principal */
+    color: #333333; 
     margin-top: auto;
 }
 
