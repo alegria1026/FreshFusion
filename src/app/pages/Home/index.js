@@ -1,15 +1,18 @@
 import Benefits from "@/app/components/Benefits"
 import Carousel from "@/app/components/ProductCarousel"
 import Header from "@/app/components/Header"
-import Menu from "@/app/components/Menu"
+import Footer from "@/app/components/Footer"
+import UsSummary from "@/app/components/UsSummary"
 
 
 function Incio() {
     return (
         <main>
             <Header></Header>
-            <Carousel></Carousel>
+            <UsSummary></UsSummary>
             <Benefits></Benefits>
+            <Carousel></Carousel>
+            <Footer></Footer>
         </main>
     )
 }
