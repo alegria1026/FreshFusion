@@ -40,7 +40,7 @@ function ProductCarousel() {
   ];
 
   const totalSlides = products.length;
-  const visibleSlides = 3; // Mostrar 3 productos a la vez
+  const visibleSlides = 1; // Cambié esto a 1, ya que solo quieres mostrar una imagen por vez
 
   // Función para manejar el inicio del toque
   const handleTouchStart = (e) => {
@@ -116,7 +116,7 @@ function ProductCarousel() {
               key={product.id}
               className={styles.slide}
               style={{
-                transform: `translateX(-${(currentIndex * 100) / visibleSlides}%)`,
+                transform: `translateX(-${(currentIndex * 100)}%)`,
                 transition: 'transform 0.3s ease',
               }}
             >
