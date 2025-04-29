@@ -1,3 +1,4 @@
+import Benefits from "@/app/components/Benefits"
 import Header from "@/app/components/Header"
 import Menu from "@/app/components/Menu"
 
@@ -7,6 +8,7 @@ function Incio() {
         <main>
             <Menu></Menu>
             <Header></Header>
+            <Benefits></Benefits>
         </main>
     )
 }
