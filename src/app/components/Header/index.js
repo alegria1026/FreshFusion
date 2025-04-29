@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Header.module.css';
-import Button from '../Button'; // Asumiendo que ya tienes el componente Button
+import Button from '../Button'; 
 import Menu from '../Menu';
 
 function Header() {

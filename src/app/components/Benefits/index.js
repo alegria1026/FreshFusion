@@ -45,7 +45,7 @@ function Benefits() {
           </div>
           <h3 className={styles.subtitle}>Sostenibles</h3>
           <p className={styles.cardText}>
-            Empaque 100% reutilizable, sostenible y práctico.
+           Empaque 100% reutilizable, sostenible y práctico.
           </p>
         </div>
       </div>

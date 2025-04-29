@@ -23,9 +23,9 @@
 
 @media (min-width: 768px) {
     .content {
-    flex-direction: row;
-    justify-content: space-between;
-    flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: wrap;
     }
 }
 
@@ -78,11 +78,11 @@
 
 @media (max-width: 767px) {
     .card {
-    max-width: 100%;
-    margin-bottom: 1.5rem;
+        max-width: 100%;
+        margin-bottom: 1.5rem;
     }
 
     .title {
-    font-size: 2rem;
+        font-size: 1.8rem;
     }
 } 
