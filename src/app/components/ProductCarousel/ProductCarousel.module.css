@@ -1,198 +1,202 @@
 /* Contenedor principal */
 .wrapper {
-    max-width: 1200px;
-    padding: 0;
-    margin: 0 auto;
-    font-family: Arial, sans-serif;
-    position: relative;
-    background-color: #FFFFFF; /* Fondo principal */
-  }
-  
-  /* Título del carrusel */
-  .title {
-    text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
-    color: #208C3C; /* Color primario */
-    font-weight: bold;
-    text-transform: uppercase;
-  }
-  
-  /* Contenedor del carrusel */
-  .carouselContainer {
-    position: relative;
-    overflow: hidden;
-    padding: 0;
-    width: 100%;
-  }
-  
-  /* Carrusel de los productos */
-  .carouselTrack {
-    display: flex;
-    width: 100%;
-    transition: transform 0.5s ease;
-  }
-  
-  /* Estilo de cada slide (mostrar 3 imágenes) */
+  max-width: 1200px;
+  padding: 0;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+  position: relative;
+  background-color: #FFFFFF; /* Fondo principal */
+}
+
+/* Título del carrusel */
+.title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #208C3C; /* Color primario */
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+/* Contenedor del carrusel */
+.carouselContainer {
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+  width: 100%;
+}
+
+/* Carrusel de los productos */
+.carouselTrack {
+  display: flex;
+  width: 100%;
+  transition: transform 0.5s ease;
+}
+
+/* Estilo de cada slide (mostrar 3 imágenes) */
+.slide {
+  flex: 0 0 33.33%; /* Mostrar 3 imágenes */
+  min-width: 33.33%;
+  padding: 0 8px;
+  box-sizing: border-box;
+  transition: transform 0.3s ease;
+}
+
+/* Enlace para cada producto */
+.productLink {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  height: 100%;
+}
+
+/* Contenedor de la imagen */
+.imageContainer {
+  width: 100%;
+  height: 280px;
+  border-radius: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.productImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+/* Overlay de texto sobre la imagen */
+.textOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 20px;
+  background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 70%);
+  color: white;
+  box-sizing: border-box;
+}
+
+/* Título del producto */
+.productTitle {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0 0 5px 0;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+/* Subtítulo del producto */
+.productSubtitle {
+  font-size: 0.9rem;
+  margin: 0;
+  padding: 3px 10px;
+  background-color: #ffd54f;
+  color: #333;
+  display: inline-block;
+  border-radius: 2px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* Flechas de navegación fuera de las imágenes */
+.arrowButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  color: #333;
+  transition: all 0.2s ease;
+}
+
+/* Hover de las flechas */
+.arrowButton:hover {
+  background-color: #f8f8f8;
+}
+
+/* Posicionamiento específico de las flechas (fuera de las imágenes) */
+.leftArrow {
+  left: 20px;
+}
+
+.rightArrow {
+  right: 20px;
+}
+
+.iconArrow {
+  width: 20px;
+  height: 20px;
+}
+
+/* Botón "Ver más" */
+.viewMoreBtn {
+  display: block;
+  margin: 2.5rem auto 0;
+  padding: 0.8rem 2.5rem;
+  background-color: #208C3C; /* Color primario */
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-align: center;
+  text-decoration: none;
+  width: fit-content;
+  font-weight: 600;
+  box-shadow: 0 2px 10px rgba(46, 139, 87, 0.3);
+}
+
+/* Hover del botón "Ver más" */
+.viewMoreBtn:hover {
+  background-color: #6CC142; /* Hover con color secundario */
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
   .slide {
-    flex: 0 0 33.33%; /* Mostrar 3 imágenes */
-    min-width: 33.33%;
-    padding: 0 8px;
-    box-sizing: border-box;
-    transition: transform 0.3s ease;
+    flex: 0 0 33.33%; /* 3 imágenes por fila */
   }
   
-  /* Enlace para cada producto */
-  .productLink {
-    text-decoration: none;
-    color: inherit;
-    display: block;
-    height: 100%;
+}
+
+@media (max-width: 768px) {
+  .slide {
+    flex: 0 0 50%; /* 2 imágenes por fila en tablets */
+    min-width: 50%;
   }
-  
-  /* Contenedor de la imagen */
-  .imageContainer {
-    width: 100%;
-    height: 280px;
-    border-radius: 0;
-    overflow: hidden;
-    position: relative;
-  }
-  
-  .productImage {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-  }
-  
-  /* Overlay de texto sobre la imagen */
-  .textOverlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 20px;
-    background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 70%);
-    color: white;
-    box-sizing: border-box;
-  }
-  
-  /* Título del producto */
+
   .productTitle {
-    font-size: 1.8rem;
-    font-weight: 700;
-    margin: 0 0 5px 0;
-    text-transform: uppercase;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    font-size: 1.5rem;
   }
-  
-  /* Subtítulo del producto */
-  .productSubtitle {
-    font-size: 0.9rem;
-    margin: 0;
-    padding: 3px 10px;
-    background-color: #ffd54f;
-    color: #333;
-    display: inline-block;
-    border-radius: 2px;
-    font-weight: 600;
-    text-transform: uppercase;
-  }
-  
-  /* Flechas de navegación fuera de las imágenes */
+
   .arrowButton {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: white;
-    border: 1px solid #ddd;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    z-index: 10;
-    color: #333;
-    transition: all 0.2s ease;
+    display: none;
   }
-  
-  /* Hover de las flechas */
-  .arrowButton:hover {
-    background-color: #f8f8f8;
+}
+
+@media (max-width: 480px) {
+  .slide {
+    flex: 0 0 100%; /* 1 imagen por fila en móviles */
+    min-width: 100%;
   }
-  
-  /* Posicionamiento específico de las flechas (fuera de las imágenes) */
-  .leftArrow {
-    left: 20px;
+
+  .productTitle {
+    font-size: 1.3rem;
   }
-  
-  .rightArrow {
-    right: 20px;
-  }
-  
-  .iconArrow {
-    width: 20px;
-    height: 20px;
-  }
-  
-  /* Botón "Ver más" */
-  .viewMoreBtn {
-    display: block;
-    margin: 2.5rem auto 0;
-    padding: 0.8rem 2.5rem;
-    background-color: #208C3C; /* Color primario */
-    color: white;
-    border: none;
-    border-radius: 25px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: all 0.3s;
-    text-align: center;
-    text-decoration: none;
-    width: fit-content;
-    font-weight: 600;
-    box-shadow: 0 2px 10px rgba(46, 139, 87, 0.3);
-  }
-  
-  /* Hover del botón "Ver más" */
-  .viewMoreBtn:hover {
-    background-color: #6CC142; /* Hover con color secundario */
-  }
-  
-  /* Responsive Design */
-  @media (max-width: 992px) {
-    .slide {
-      flex: 0 0 33.33%; /* 3 imágenes por fila */
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .slide {
-      flex: 0 0 50%; /* 2 imágenes por fila en tablets */
-      min-width: 50%;
-    }
-  
-    .productTitle {
-      font-size: 1.5rem;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .slide {
-      flex: 0 0 100%; /* 1 imagen por fila en móviles */
-      min-width: 100%;
-    }
-  
-    .productTitle {
-      font-size: 1.3rem;
-    }
-  }
-  
+}

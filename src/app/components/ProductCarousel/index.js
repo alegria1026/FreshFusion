@@ -54,10 +54,12 @@ function ProductCarousel() {
 
   // Función para manejar el fin del toque y detectar la dirección
   const handleTouchEnd = () => {
-    if (startTouch - endTouch > 100) {
-      nextSlide(); // Deslizar hacia la izquierda
-    } else if (endTouch - startTouch > 100) {
-      prevSlide(); // Deslizar hacia la derecha
+    if (Math.abs(startTouch - endTouch) > 50) {
+      if (startTouch > endTouch) {
+        nextSlide(); // Deslizar hacia la izquierda (avanzar)
+      } else {
+        prevSlide(); // Deslizar hacia la derecha (retroceder)
+      }
     }
   };
 
