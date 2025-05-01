@@ -5,7 +5,7 @@ import empresaImg from './empresa.png'; // Ajusta la ruta a la imagen correcta
 
 function UsSummary() {
   return (
-    <section id="us" className={styles.wrapper}>
+    <section className={styles.wrapper}>
       <h2 className={styles.title}>NOSOTROS</h2>
       <div className={styles.content}>
         <div className={styles.text}>
