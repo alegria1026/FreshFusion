@@ -9,10 +9,14 @@
 }
 
 .title {
-    font-size: 2rem;
-    margin-bottom: 2rem;
-    color: #333;
+    margin-bottom: 1rem;
+    padding-bottom: 10px;
+    font-size: 3rem;
+    font-weight: 700;
+    color: #208C3C; 
     text-align: center;
+    text-transform: uppercase;
+    position: relative;
 }
 
 .viewerWrapper {

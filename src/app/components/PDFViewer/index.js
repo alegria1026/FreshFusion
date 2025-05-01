@@ -41,7 +41,7 @@ const PDFViewer = () => {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>Diga Revista</h1>
+      <h1 className={styles.title}>REVISTA</h1>
       <div className={styles.viewerWrapper}>
         <iframe 
           src={viewerUrl}
