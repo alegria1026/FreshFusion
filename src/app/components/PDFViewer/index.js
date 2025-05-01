@@ -1,62 +1,58 @@
-// PDFViewer.js
 "use client";
 
 import { useState, useEffect } from 'react';
-import styles from './PDFViewer.module.css'; // Importa el CSS module
+import styles from './PDFViewer.module.css';
 
-const PDFViewer = ({ pdfPath }) => {
-  const [windowWidth, setWindowWidth] = useState(0);  // Estado para el ancho de la ventana
+const PDFViewer = () => {
+  // URL original de Google Drive
+  const googleDriveUrl = "https://drive.google.com/file/d/19JikFgYO9_TaOnSnC51AjSDqZnkI2c9j/view?usp=sharing";
+  
+  // Obtener el ID del archivo de la URL
+  const fileId = googleDriveUrl.split('/d/')[1].split('/')[0];
+  
+  // Crear la URL de visualización para el iframe
+  const viewerUrl = `https://drive.google.com/file/d/${fileId}/preview`;
+
+  const [windowWidth, setWindowWidth] = useState(0);
 
   useEffect(() => {
-    // Establece el tamaño de la ventana cuando el componente se monta
     const handleResize = () => {
-      setWindowWidth(window.innerWidth);  // Actualiza el estado con el ancho de la ventana
+      setWindowWidth(window.innerWidth);
     };
-    
-    handleResize();  // Llama a la función de inmediato para establecer el tamaño inicial
-    
-    // Añadir el evento de redimensionamiento para que se actualice en el futuro
+
+    handleResize(); // Initialize width
     window.addEventListener('resize', handleResize);
 
-    // Limpiar el evento cuando el componente se desmonte
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, []); // Solo se ejecuta una vez cuando el componente se monta
+  }, []);
 
-  // Función para calcular las dimensiones del PDF
   const calculateDimensions = () => {
-    const maxWidth = 800;
-    const width = windowWidth > maxWidth ? maxWidth : windowWidth - 40;
-    const height = width * 1.4;
+    const maxWidth = 1000; // Increased max width for better viewing
+    const margin = 40;
+    const width = Math.min(maxWidth, windowWidth - margin);
+    const height = width * (windowWidth > 768 ? 1.4 : 1.2); // Different aspect ratio for mobile
     
     return { width, height };
   };
 
-  const { width, height } = calculateDimensions();  // Calcula las dimensiones del PDF
-  
-  // Si no hay ruta de PDF, mostramos un mensaje de error
-  if (!pdfPath) {
-    return <div className={styles.errorMessage}>No se ha especificado una ruta de PDF.</div>;
-  }
-  
+  const { width, height } = calculateDimensions();
+
   return (
-    <div className={styles.pdfContainer}>
-      <h1 className={styles.title}>Diga Revista</h1> {/* Título centrado */}
-      <object
-        data={pdfPath}
-        type="application/pdf"
-        width={width}
-        height={height}
-        className={styles.pdfViewer}
-      >
-        <p>
-          Tu navegador no puede mostrar el PDF directamente.{' '}
-          <a href={pdfPath} target="_blank" rel="noopener noreferrer">
-            Descárgalo aquí
-          </a>
-        </p>
-      </object>
+    <div className={styles.container}>
+      <h1 className={styles.title}>Diga Revista</h1>
+      <div className={styles.viewerWrapper}>
+        <iframe 
+          src={viewerUrl}
+          className={styles.viewer}
+          frameBorder="0"
+          allowFullScreen
+          title="PDF Viewer"
+          width={width}
+          height={height}
+        />
+      </div>
     </div>
   );
 };

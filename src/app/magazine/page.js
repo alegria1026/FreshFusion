@@ -7,8 +7,8 @@ import PDFViewer from '../components/PDFViewer';
 export default function MagazinePage() {
   return (
     <div className="container">
-      <Menu/>
-      <PDFViewer pdfPath="/prueba.pdf" />
+      <Menu />
+      <PDFViewer />
       <Footer/>
     </div>
   );

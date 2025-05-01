@@ -1,69 +1,57 @@
-/* PDFViewer.module.css */
-
-.pdfContainer {
+.container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 7rem;
+    padding: 2rem 1rem;
+    margin-top: 5rem;
     margin-bottom: 2rem;
-    padding: 0 10px; /* Un poco de relleno en los bordes */
-}
-
-.pdfViewer {
-    border: 1px solid #ccc;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 100%; /* Asegura que el PDF ocupe el 100% del ancho disponible */
-    max-width: 800px; /* El tamaño máximo será 800px, como estaba originalmente */
-}
-
-.errorMessage {
-    padding: 20px;
-    text-align: center;
-    color: #d32f2f;
-    background-color: #ffebee;
-    border-radius: 4px;
-    margin: 20px 0;
-    max-width: 500px;
+    width: 100%;
 }
 
 .title {
-    font-size: 2rem; /* Tamaño grande de fuente para el título */
-    font-weight: bold;
-    text-align: center;
-    color: #333;
+    font-size: 2rem;
     margin-bottom: 2rem;
+    color: #333;
+    text-align: center;
 }
 
-/* Media Query para dispositivos pequeños (tabletas y teléfonos) */
+.viewerWrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 0 1rem;
+}
+
+.viewer {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background: #f9f9f9;
+}
+
+/* Responsive adjustments */
 @media (max-width: 768px) {
+    .container {
+    margin-top: 3rem;
+    padding: 1rem 0.5rem;
+    }
+    
     .title {
-    font-size: 1.5rem; /* Reducción de tamaño del título */
+    font-size: 1.5rem;
     margin-bottom: 1.5rem;
     }
-
-    .pdfViewer {
-    height: auto; /* Deja que la altura se ajuste automáticamente */
-    max-width: 100%; /* Asegura que no se sobrepase el ancho disponible */
-    }
-
-    .pdfContainer {
-    padding: 0 10px; /* Asegura que el contenido no se salga en pantallas pequeñas */
-    }
 }
 
-/* Media Query para dispositivos móviles más pequeños */
 @media (max-width: 480px) {
+    .container {
+    margin-top: 2rem;
+    }
+    
     .title {
-    font-size: 1.2rem; /* Reducción adicional en pantallas más pequeñas */
-    margin-bottom: 1rem;
+    font-size: 1.3rem;
     }
-
-    .pdfViewer {
-    height: auto; /* La altura se ajusta automáticamente */
-    max-width: 100%; /* Limita el ancho máximo */
-    }
-
-    .pdfContainer {
-    padding: 0 5px; /* Relleno reducido en dispositivos pequeños */
+    
+    .viewerWrapper {
+    padding: 0;
     }
 }
