@@ -1,4 +1,5 @@
 import Carousel from "../components/Carousel";
+import Footer from "../components/Footer";
 import Menu from "../components/Menu";
 import styles from "./page.module.css"
 
@@ -6,42 +7,42 @@ export default function kits() {
   const kit = [
     {
       id: 1,
-      title: 'KITS DIABETES',
-      image: '/diabetes-kit.jpg',
-      link: '/productos/diabetes'
+      title: 'SOBREPESO',
+      image: '/kit1.png',
+      link: '/infographic/kitsobrepeso'
     },
     {
       id: 2,
-      title: 'COMIDA ORGÁNICA',
-      image: '/organic-food.jpg',
-      link: '/productos/organicos'
+      title: 'DIABETES',
+      image: '/kit2.png',
+      link: '/infographic/balancebox'
     },
     {
       id: 3,
-      title: 'SNACKS SALUDABLES',
-      image: '/healthy-snacks.jpg',
-      link: '/productos/snacks'
+      title: 'DESNUTIRICIÓN',
+      image: '/kit3.png',
+      link: '/infographic/kitdenutricion'
     }
   ];
 
   const infunsiones = [
     {
       id: 1,
-      title: 'KITS DIABETES',
-      image: '/diabetes-kit.jpg',
-      link: '/productos/diabetes'
+      title: 'SOBREPESO',
+      image: '/infu1.png',
+      link: '/infographic/infusobrepeso'
     },
     {
       id: 2,
-      title: 'COMIDA ORGÁNICA',
-      image: '/organic-food.jpg',
-      link: '/productos/organicos'
+      title: 'DIABETES',
+      image: '/infu2.png',
+      link: '/infographic/infudiabetes'
     },
     {
       id: 3,
-      title: 'SNACKS SALUDABLES',
-      image: '/healthy-snacks.jpg',
-      link: '/productos/snacks'
+      title: 'DESNUTIRICIÓN',
+      image: '/infu3.png',
+      link: '/infographic/infudesnutricion'
     }
   ];
   return (
@@ -54,8 +55,9 @@ export default function kits() {
       />
       <Carousel 
         title="INFUSIONES" 
-        products={kit} 
-      />            
+        products={infunsiones} 
+      />
+      <Footer />            
     </div>
   );
 }

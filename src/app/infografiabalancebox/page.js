@@ -1,4 +1,4 @@
-import BalanceBox from "../components/BalanceBox";
+import BalanceBox from "../../components/BalanceBox";
 
 export default function infografiabalacebox () {
     return (

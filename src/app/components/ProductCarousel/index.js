@@ -1,166 +1,99 @@
 'use client';
-
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import styles from './ProductCarousel.module.css';
 
-function ProductCarousel() {
+function ProductCarousel({ title = "PRODUCTOS DESTACADOS", products = [] }) {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [startTouch, setStartTouch] = useState(0);
-  const [endTouch, setEndTouch] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
-  const products = [
-    {
-      id: 1,
-      title: 'Kits de comida saludable',
-      subtitle: 'Nuestra opción más saludable',
-      image: "/file.svg",
-      link: '/productos/meat-veggies',
-    },
-    {
-      id: 2,
-      title: 'Yogurt natural con fruta',
-      subtitle: 'Refrescante y natural',
-      image: "/file.svg",
-      link: '/productos/yogurt',
-    },
-    {
-      id: 3,
-      title: 'Chips de verduras',
-      subtitle: 'Crujientes y deliciosos',
-      image: "/file.svg",
-      link: '/productos/chips-verduras',
-    },
-    {
-      id: 4,
-      title: 'Hummus de garbanzo',
-      subtitle: 'El sabor perfecto',
-      image: "/file.svg",
-      link: '/productos/hummus',
-    },
-  ];
+  // Detectar si es móvil
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
-  const totalSlides = products.length;
-  const visibleSlides = 1; 
-
-  // Función para manejar el inicio del toque
-  const handleTouchStart = (e) => {
-    setStartTouch(e.targetTouches[0].clientX);
-  };
-
-  // Función para manejar el movimiento del toque
-  const handleTouchMove = (e) => {
-    setEndTouch(e.targetTouches[0].clientX);
-  };
-
-  // Función para manejar el fin del toque y detectar la dirección
-  const handleTouchEnd = () => {
-    if (Math.abs(startTouch - endTouch) > 50) {
-      if (startTouch > endTouch) {
-        nextSlide(); // Deslizar hacia la izquierda (avanzar)
-      } else {
-        prevSlide(); // Deslizar hacia la derecha (retroceder)
-      }
-    }
-  };
-
-  // Lógica para ir al siguiente slide
   const nextSlide = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === totalSlides - 1 ? 0 : prevIndex + 1
-    );
+    setCurrentIndex(prev => (prev + 1) % products.length);
   };
 
-  // Lógica para ir al slide anterior
   const prevSlide = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? totalSlides - 1 : prevIndex - 1
-    );
+    setCurrentIndex(prev => (prev - 1 + products.length) % products.length);
   };
 
   return (
     <section className={styles.wrapper}>
-      <h2 className={styles.title}>PRODUCTOS DESTACADOS</h2>
+      <h2 className={styles.title}>{title}</h2>
+      
+      <div className={styles.carouselContainer}>
+        {/* Flechas solo visibles en móvil con 2+ productos */}
+        {isMobile && products.length > 1 && (
+          <>
+            <button 
+              className={`${styles.arrowButton} ${styles.leftArrow}`}
+              onClick={prevSlide}
+              aria-label="Anterior"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                className={styles.iconArrow}
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
 
-      <div
-        className={styles.carouselContainer}
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
-        onTouchEnd={handleTouchEnd}
-      >
-        <button
-          className={`${styles.arrowButton} ${styles.leftArrow}`}
-          onClick={prevSlide}
-          aria-label="Anterior"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            className={styles.iconArrow}
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M15 19l-7-7 7-7"
-            />
-          </svg>
-        </button>
+            <button 
+              className={`${styles.arrowButton} ${styles.rightArrow}`}
+              onClick={nextSlide}
+              aria-label="Siguiente"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                className={styles.iconArrow}
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+          </>
+        )}
 
-        {/* Carrusel de productos */}
-        <div className={styles.carouselTrack}>
+        {/* Contenido del carrusel sin enlaces */}
+        <div className={styles.carouselContent}>
           {products.map((product, index) => (
-            <div
-              key={product.id}
-              className={styles.slide}
-              style={{
-                transform: `translateX(-${(currentIndex * 100)}%)`,
-                transition: 'transform 0.3s ease',
+            <div 
+              key={product.id || index}
+              className={styles.productCard}
+              style={{ 
+                flex: isMobile ? '0 0 100%' : '0 0 48%',
+                display: isMobile ? (index === currentIndex ? 'block' : 'none') : 'block',
+                transform: isMobile ? `translateX(-${currentIndex * 100}%)` : 'none'
               }}
             >
-              <a href={product.link} className={styles.productLink}>
-                <div className={styles.imageContainer}>
-                  <img
-                    src={product.image.src}
-                    alt={product.title}
-                    className={styles.productImage}
-                  />
-                  <div className={styles.textOverlay}>
-                    <h3 className={styles.productTitle}>{product.title}</h3>
-                    <p className={styles.productSubtitle}>{product.subtitle}</p>
-                  </div>
-                </div>
-              </a>
+              <div className={styles.imageContainer}>
+                <Image
+                  src={product.image}
+                  alt={product.title}
+                  fill
+                  className={styles.productImage}
+                  sizes={isMobile ? "100vw" : "50vw"}
+                />
+                <h3 className={styles.productTitle}>{product.title}</h3>
+              </div>
             </div>
           ))}
         </div>
-
-        <button
-          className={`${styles.arrowButton} ${styles.rightArrow}`}
-          onClick={nextSlide}
-          aria-label="Siguiente"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            className={styles.iconArrow}
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M9 5l7 7-7 7"
-            />
-          </svg>
-        </button>
       </div>
-
-      <a href="/productos" className={styles.viewMoreBtn}>
-        Ver más
-      </a>
     </section>
   );
 }
