@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import styles from './ProductCarousel.module.css';
 
-function ProductCarousel({ title = "PRODUCTOS DESTACADOS", products = [] }) {
+function ProductCarousel({ title = "CATEGORÍA", products = [] }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
 
