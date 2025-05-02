@@ -1,5 +1,6 @@
 import Carousel from "../components/Carousel";
 import Menu from "../components/Menu";
+import styles from "./page.module.css"
 
 export default function kits() {
   const kit = [
@@ -45,11 +46,8 @@ export default function kits() {
   ];
   return (
     <div>
+      <h1 className={styles.title}>PRODUCTOS</h1>
       <Menu />
-      <br />
-      <br />
-      <br />
-      <br />
       <Carousel 
         title="KITS" 
         products={kit} 
