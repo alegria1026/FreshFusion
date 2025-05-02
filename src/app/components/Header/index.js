@@ -18,7 +18,7 @@ function Header() {
                         En FreshFusion, ofrecemos kits de almuerzo saludables, nutritivos y equilibrados que se adaptan a las necesidades nutricionales específicas de personas con diabetes, obesidad y desnutrición.
                     </p>
                     <br></br>
-                    <Button text="Descubre nuestros kits" link="#kits" />
+                    <Button text="Descubre nuestros kits" link="/kits" />
                 </div>
             </div>
         </div>

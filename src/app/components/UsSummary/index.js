@@ -20,7 +20,7 @@ function UsSummary() {
             <li>Kits listos para disfrutar, sin necesidad de preparación</li>
             <li>Empaque 100% reutilizable y sostenible</li>
           </ul>
-          <a href="/sobre-nosotros" className={styles.btnConocer}>
+          <a href="/us" className={styles.btnConocer}>
             Conocer más
           </a>
         </div>
