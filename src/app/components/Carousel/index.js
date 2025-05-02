@@ -1,86 +1,52 @@
 'use client';
-
 import { useState } from 'react';
-import styles from './ProductCarousel.module.css';
+import styles from './Carousel.module.css';
+import Image from 'next/image';
 
-function ProductCarousel() {
+function Carousel({ 
+  title = "PRODUCTOS DESTACADOS", 
+  products = [] 
+}) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [startTouch, setStartTouch] = useState(0);
   const [endTouch, setEndTouch] = useState(0);
 
-  const products = [
-    {
-      id: 1,
-      title: 'Kits de comida saludable',
-      subtitle: 'Nuestra opción más saludable',
-      image: "/file.svg",
-      link: '/productos/meat-veggies',
-    },
-    {
-      id: 2,
-      title: 'Yogurt natural con fruta',
-      subtitle: 'Refrescante y natural',
-      image: "/file.svg",
-      link: '/productos/yogurt',
-    },
-    {
-      id: 3,
-      title: 'Chips de verduras',
-      subtitle: 'Crujientes y deliciosos',
-      image: "/file.svg",
-      link: '/productos/chips-verduras',
-    },
-    {
-      id: 4,
-      title: 'Hummus de garbanzo',
-      subtitle: 'El sabor perfecto',
-      image: "/file.svg",
-      link: '/productos/hummus',
-    },
-  ];
-
   const totalSlides = products.length;
-  const visibleSlides = 1; 
+  const visibleSlides = 3;
 
-  // Función para manejar el inicio del toque
   const handleTouchStart = (e) => {
     setStartTouch(e.targetTouches[0].clientX);
   };
 
-  // Función para manejar el movimiento del toque
   const handleTouchMove = (e) => {
     setEndTouch(e.targetTouches[0].clientX);
   };
 
-  // Función para manejar el fin del toque y detectar la dirección
   const handleTouchEnd = () => {
     if (Math.abs(startTouch - endTouch) > 50) {
       if (startTouch > endTouch) {
-        nextSlide(); // Deslizar hacia la izquierda (avanzar)
+        nextSlide();
       } else {
-        prevSlide(); // Deslizar hacia la derecha (retroceder)
+        prevSlide();
       }
     }
   };
 
-  // Lógica para ir al siguiente slide
   const nextSlide = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === totalSlides - 1 ? 0 : prevIndex + 1
+    setCurrentIndex((prevIndex) => 
+      prevIndex + 1 >= totalSlides - visibleSlides + 1 ? 0 : prevIndex + 1
     );
   };
 
-  // Lógica para ir al slide anterior
   const prevSlide = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? totalSlides - 1 : prevIndex - 1
+    setCurrentIndex((prevIndex) => 
+      prevIndex === 0 ? totalSlides - visibleSlides : prevIndex - 1
     );
   };
 
   return (
     <section className={styles.wrapper}>
-      <h2 className={styles.title}>PRODUCTOS DESTACADOS</h2>
-
+      <h2 className={styles.title}>{title}</h2>
       <div
         className={styles.carouselContainer}
         onTouchStart={handleTouchStart}
@@ -108,27 +74,27 @@ function ProductCarousel() {
           </svg>
         </button>
 
-        {/* Carrusel de productos */}
         <div className={styles.carouselTrack}>
           {products.map((product, index) => (
             <div
-              key={product.id}
+              key={product.id || index}
               className={styles.slide}
               style={{
-                transform: `translateX(-${(currentIndex * 100)}%)`,
-                transition: 'transform 0.3s ease',
+                transform: `translateX(-${currentIndex * (100 / visibleSlides)}%)`,
+                minWidth: `${100 / visibleSlides}%`,
               }}
             >
               <a href={product.link} className={styles.productLink}>
                 <div className={styles.imageContainer}>
-                  <img
-                    src={product.image.src}
+                  <Image
+                    src={product.image}
                     alt={product.title}
+                    fill
                     className={styles.productImage}
+                    sizes="(max-width: 768px) 100vw, 33vw"
                   />
                   <div className={styles.textOverlay}>
                     <h3 className={styles.productTitle}>{product.title}</h3>
-                    <p className={styles.productSubtitle}>{product.subtitle}</p>
                   </div>
                 </div>
               </a>
@@ -157,12 +123,8 @@ function ProductCarousel() {
           </svg>
         </button>
       </div>
-
-      <a href="/productos" className={styles.viewMoreBtn}>
-        Ver más
-      </a>
     </section>
   );
 }
 
-export default ProductCarousel;
+export default Carousel;
