@@ -32,7 +32,7 @@ function Carousel({ title = "PRODUCTOS DESTACADOS", products = [] }) {
       
       <div className={styles.carouselContainer}>
         {/* Flechas solo visibles en móvil */}
-        {isMobile && (
+        {isMobile && products.length > 1 && (
           <>
             <button 
               className={`${styles.arrowButton} ${styles.leftArrow}`}
@@ -75,8 +75,10 @@ function Carousel({ title = "PRODUCTOS DESTACADOS", products = [] }) {
               key={product.id || index}
               className={styles.productCard}
               style={{ 
-                display: isMobile ? (index === currentIndex ? 'block' : 'none') : 'block',
-                transform: isMobile ? `translateX(-${currentIndex * 100}%)` : 'none'
+                transform: isMobile ? `translateX(${(index - currentIndex) * 100}%)` : 'none',
+                flex: isMobile ? '0 0 100%' : '1',
+                minWidth: isMobile ? '100%' : '300px',
+                maxWidth: isMobile ? '100%' : 'calc(33.333% - 20px)'
               }}
             >
               <a href={product.link} className={styles.productLink}>

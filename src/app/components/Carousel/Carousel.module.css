@@ -17,26 +17,26 @@
 
 .carouselContainer {
     position: relative;
+    overflow: hidden;
 }
 
 .carouselContent {
     display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
+    transition: transform 0.5s ease;
+    width: 100%;
 }
 
 .productCard {
-    flex: 1;
-    min-width: 300px;
-    max-width: calc(33.333% - 20px);
-    transition: transform 0.3s ease;
+    transition: transform 0.5s ease;
+    padding: 0 10px;
+    box-sizing: border-box;
 }
 
 .productLink {
     text-decoration: none;
     color: inherit;
     display: block;
+    height: 100%;
 }
 
 .imageContainer {
@@ -71,21 +71,8 @@
     text-transform: uppercase;
 }
 
-/* Estilos solo para móvil */
-@media (max-width: 768px) {
-    .carouselContent {
-    flex-wrap: nowrap;
-    overflow: hidden;
-    }
-
-    .productCard {
-    flex: 0 0 100%;
-    max-width: 100%;
-    min-width: 100%;
-    transition: transform 0.5s ease;
-    }
-
-    .arrowButton {
+/* Flechas */
+.arrowButton {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -101,29 +88,74 @@
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     z-index: 10;
     color: #333;
-    }
+    transition: all 0.2s ease;
+}
 
-    .leftArrow {
-    left: 10px;
-    }
+.arrowButton:hover {
+    background-color: #f8f8f8;
+    transform: translateY(-50%) scale(1.1);
+}
 
-    .rightArrow {
-    right: 10px;
-    }
+.leftArrow {
+    left: 20px;
+}
 
-    .iconArrow {
+.rightArrow {
+    right: 20px;
+}
+
+.iconArrow {
     width: 20px;
     height: 20px;
+}
+
+/* Desktop (3 columnas) */
+@media (min-width: 769px) {
+    .carouselContent {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    transform: none !important;
+    }
+    
+    .productCard {
+    flex: 1;
+    min-width: 300px;
+    max-width: calc(33.333% - 20px);
+    transform: none !important;
     }
 }
 
-@media (max-width: 480px) {
+/* Móvil (carrusel) */
+@media (max-width: 768px) {
+    .carouselContent {
+    flex-wrap: nowrap;
+    }
+    
+    .productCard {
+    flex: 0 0 100%;
+    min-width: 100%;
+    }
+    
     .title {
     font-size: 2rem;
     }
+}
 
+/* Móviles pequeños */
+@media (max-width: 480px) {
     .productTitle {
     font-size: 1.2rem;
     padding: 15px;
+    }
+    
+    .arrowButton {
+    width: 35px;
+    height: 35px;
+    }
+    
+    .iconArrow {
+    width: 18px;
+    height: 18px;
     }
 }
