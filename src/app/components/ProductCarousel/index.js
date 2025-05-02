@@ -1,11 +1,12 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import styles from './ProductCarousel.module.css';
 
 function ProductCarousel({ title = "CATEGORÍA", products = [] }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const carouselRef = useRef(null);
 
   // Detectar si es móvil
   useEffect(() => {
@@ -30,7 +31,7 @@ function ProductCarousel({ title = "CATEGORÍA", products = [] }) {
     <section className={styles.wrapper}>
       <h2 className={styles.title}>{title}</h2>
       
-      <div className={styles.carouselContainer}>
+      <div className={styles.carouselContainer} ref={carouselRef}>
         {/* Flechas solo visibles en móvil con 2+ productos */}
         {isMobile && products.length > 1 && (
           <>
@@ -68,16 +69,16 @@ function ProductCarousel({ title = "CATEGORÍA", products = [] }) {
           </>
         )}
 
-        {/* Contenido del carrusel sin enlaces */}
+        {/* Contenido del carrusel */}
         <div className={styles.carouselContent}>
           {products.map((product, index) => (
             <div 
               key={product.id || index}
               className={styles.productCard}
               style={{ 
-                flex: isMobile ? '0 0 100%' : '0 0 48%',
-                display: isMobile ? (index === currentIndex ? 'block' : 'none') : 'block',
-                transform: isMobile ? `translateX(-${currentIndex * 100}%)` : 'none'
+                transform: isMobile ? `translateX(${-currentIndex * 100}%)` : 'none',
+                flex: isMobile ? '0 0 100%' : '0 0 calc(50% - 20px)',
+                minWidth: isMobile ? '100%' : 'calc(50% - 20px)'
               }}
             >
               <div className={styles.imageContainer}>

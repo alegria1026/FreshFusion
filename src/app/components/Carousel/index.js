@@ -1,11 +1,12 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import styles from './Carousel.module.css';
 import Image from 'next/image';
 
 function Carousel({ title = "PRODUCTOS DESTACADOS", products = [] }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const carouselRef = useRef(null);
 
   // Detectar si es móvil
   useEffect(() => {
@@ -26,11 +27,19 @@ function Carousel({ title = "PRODUCTOS DESTACADOS", products = [] }) {
     setCurrentIndex(prev => (prev - 1 + products.length) % products.length);
   };
 
+  // Calcular el ancho del carrusel para el desplazamiento
+  const getSlideWidth = () => {
+    if (carouselRef.current) {
+      return carouselRef.current.offsetWidth;
+    }
+    return 0;
+  };
+
   return (
     <section className={styles.wrapper}>
       <h2 className={styles.title}>{title}</h2>
       
-      <div className={styles.carouselContainer}>
+      <div className={styles.carouselContainer} ref={carouselRef}>
         {/* Flechas solo visibles en móvil */}
         {isMobile && products.length > 1 && (
           <>
@@ -75,7 +84,7 @@ function Carousel({ title = "PRODUCTOS DESTACADOS", products = [] }) {
               key={product.id || index}
               className={styles.productCard}
               style={{ 
-                transform: isMobile ? `translateX(${(index - currentIndex) * 100}%)` : 'none',
+                transform: isMobile ? `translateX(${-currentIndex * 100}%)` : 'none',
                 flex: isMobile ? '0 0 100%' : '1',
                 minWidth: isMobile ? '100%' : '300px',
                 maxWidth: isMobile ? '100%' : 'calc(33.333% - 20px)'

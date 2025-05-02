@@ -18,6 +18,7 @@
 .carouselContainer {
     position: relative;
     overflow: hidden;
+    width: 100%;
 }
 
 .carouselContent {
@@ -28,6 +29,7 @@
 
 .productCard {
     transition: transform 0.5s ease;
+    flex-shrink: 0;
     padding: 0 10px;
     box-sizing: border-box;
 }

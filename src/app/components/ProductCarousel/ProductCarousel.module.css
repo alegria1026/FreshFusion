@@ -16,20 +16,20 @@
 
 .carouselContainer {
   position: relative;
+  overflow: hidden;
 }
 
 .carouselContent {
   display: flex;
-  gap: 20px;
-  justify-content: center;
-  flex-wrap: wrap;
+  transition: transform 0.5s ease;
+  width: 100%;
 }
 
 .productCard {
-  flex: 0 0 calc(50% - 20px); /* 2 columnas con gap */
-  max-width: calc(50% - 20px);
-  transition: all 0.3s ease;
-  position: relative;
+  flex-shrink: 0;
+  transition: transform 0.5s ease;
+  box-sizing: border-box;
+  padding: 0 10px;
 }
 
 .imageContainer {
@@ -60,7 +60,7 @@
   text-transform: uppercase;
 }
 
-/* Flechas (solo móvil) */
+/* Flechas */
 .arrowButton {
   position: absolute;
   top: 50%;
@@ -82,14 +82,15 @@
 
 .arrowButton:hover {
   background-color: #f8f8f8;
+  transform: translateY(-50%) scale(1.1);
 }
 
 .leftArrow {
-  left: 10px;
+  left: 20px;
 }
 
 .rightArrow {
-  right: 10px;
+  right: 20px;
 }
 
 .iconArrow {
@@ -97,29 +98,35 @@
   height: 20px;
 }
 
-/* Responsive: Móvil (carrusel) */
-@media (max-width: 768px) {
+/* Desktop (2 columnas) */
+@media (min-width: 769px) {
   .carouselContent {
-    flex-wrap: nowrap;
-    overflow: hidden;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    transform: none !important;
   }
-
+  
   .productCard {
-    flex: 0 0 100%;
-    max-width: 100%;
-    min-width: 100%;
-  }
-
-  .title {
-    font-size: 2.3rem;
+    flex: 0 0 calc(50% - 20px);
+    min-width: calc(50% - 20px);
+    transform: none !important;
   }
 }
 
-/* Tablet */
-@media (max-width: 1024px) and (min-width: 769px) {
+/* Móvil (carrusel) */
+@media (max-width: 768px) {
+  .carouselContent {
+    flex-wrap: nowrap;
+  }
+  
   .productCard {
-    flex: 0 0 calc(50% - 15px);
-    max-width: calc(50% - 15px);
+    flex: 0 0 100%;
+    min-width: 100%;
+  }
+  
+  .title {
+    font-size: 2.3rem;
   }
 }
 
@@ -135,7 +142,7 @@
   }
 }
 
-/* Pequeños ajustes para móviles pequeños */
+/* Móviles pequeños */
 @media (max-width: 480px) {
   .wrapper {
     padding: 1rem 0.5rem;
@@ -148,5 +155,15 @@
   .productTitle {
     font-size: 1.2rem;
     padding: 15px;
+  }
+  
+  .arrowButton {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .iconArrow {
+    width: 18px;
+    height: 18px;
   }
 }

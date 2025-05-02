@@ -9,13 +9,13 @@ function Incio() {
     const products = [
         {
             id: 1,
-            title: 'KIT DIABETES',
-            image: '/diabetes-kit.jpg' // Ruta desde public/
+            title: 'KITS SALUDABLES',
+            image: '/cat1.webp'
         },
         {
             id: 2,
-            title: 'SNACKS SALUDABLES',
-            image: '/healthy-snacks.jpg'
+            title: 'INFUSIONES',
+            image: '/cat2.jpg'
         }
     ];
         
