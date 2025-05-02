@@ -41,10 +41,12 @@
     padding: 2rem;
     max-width: 800px;
     margin-left: 5%;
+    padding-top: 3rem;
+    padding-bottom: 1rem;
 }
 
 .title {
-    font-size: 3rem;
+    font-size: 2.5rem;
     font-weight: 700;
     color: #fff;
     margin-bottom: 1.5rem;
@@ -55,7 +57,7 @@
 }
 
 .heroText {
-    font-size: 2rem;
+    font-size: 1.7rem;
     line-height: 1.6;
     margin-bottom: 2rem;
     color: #fff;
