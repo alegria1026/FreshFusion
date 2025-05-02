@@ -1,7 +1,6 @@
 'use client';
 import styles from './UsSummary.module.css';
 import Image from 'next/image';
-import empresaImg from './empresa.png'; // Ajusta la ruta a la imagen correcta
 
 function UsSummary() {
   return (
@@ -26,7 +25,7 @@ function UsSummary() {
           </a>
         </div>
         <div className={styles.image}>
-          <Image src={empresaImg} alt="Imagen de la empresa" fill className={styles.img} />
+          <Image src="/empresa.png" alt="Imagen de la empresa" fill className={styles.img} />
         </div>
       </div>
     </section>

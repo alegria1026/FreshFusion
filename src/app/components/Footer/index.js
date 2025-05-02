@@ -10,11 +10,6 @@ function Footer() {
         <div className={styles.column}>
           <div className={styles.logo}>
             <span className={styles.logoText}>Fresh Fusion</span>
-            <div className={styles.logoIcon}>
-              <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" className={styles.icon}>
-                <path d="M20 5C14.477 5 10 9.477 10 15V25C10 30.523 14.477 35 20 35C25.523 35 30 30.523 30 25V15C30 9.477 25.523 5 20 5ZM20 9C21.657 9 23 10.343 23 12V18C23 19.657 21.657 21 20 21C18.343 21 17 19.657 17 18V12C17 10.343 18.343 9 20 9Z" fill="#7AFF64"/>
-              </svg>
-            </div>
           </div>
           
           <address className={styles.address}>
@@ -36,10 +31,9 @@ function Footer() {
           <nav className={styles.menu}>
             <ul>
               <li><Link href="/" className={styles.menuItem}>Inicio</Link></li>
-              <li><Link href="/nosotros" className={styles.menuItem}>Nosotros</Link></li>
+              <li><Link href="/us" className={styles.menuItem}>Nosotros</Link></li>
               <li><Link href="/kits" className={styles.menuItem}>Kits</Link></li>
-              <li><Link href="/sostenibilidad" className={styles.menuItem}>Sostenibilidad</Link></li>
-              <li><Link href="/contacto" className={styles.menuItem}>Contacto</Link></li>
+              <li><Link href="/magazine" className={styles.menuItem}>Revista</Link></li>
             </ul>
           </nav>
         </div>
