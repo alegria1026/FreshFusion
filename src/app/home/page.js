@@ -3,6 +3,7 @@ import Carousel from "@/app/components/ProductCarousel"
 import Header from "@/app/components/Header"
 import Footer from "@/app/components/Footer"
 import UsSummary from "@/app/components/UsSummary"
+import ProductCarousel from "@/app/components/ProductCarousel"
 
 
 function Incio() {
@@ -16,15 +17,23 @@ function Incio() {
             id: 2,
             title: 'INFUSIONES',
             image: '/cat2.jpg'
+        },
+        {
+            id: 3,
+            title: 'PROTEINAS',
+            image: '/cat2.jpg'
         }
     ];
-        
+    
     return (
         <main>
             <Header></Header>
             <UsSummary></UsSummary>
             <Benefits></Benefits>
-            <Carousel products={products}></Carousel>
+            <Carousel 
+                title="Categorías" 
+                products={products} 
+            />
             <Footer></Footer>
         </main>
     )

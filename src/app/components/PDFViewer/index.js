@@ -5,7 +5,7 @@ import styles from './PDFViewer.module.css';
 
 const PDFViewer = () => {
   // URL original de Google Drive
-  const googleDriveUrl = "https://drive.google.com/file/d/19JikFgYO9_TaOnSnC51AjSDqZnkI2c9j/view?usp=sharing";
+  const googleDriveUrl = "https://drive.google.com/file/d/1cOM95P0lwB6TvkPKhARV2HCB4y4rvsf5/view?usp=sharing";
   
   // Obtener el ID del archivo de la URL
   const fileId = googleDriveUrl.split('/d/')[1].split('/')[0];

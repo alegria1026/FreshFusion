@@ -37,12 +37,6 @@ export default function kits() {
       title: 'DIABETES',
       image: '/infu2.png',
       link: '/infographic/infudiabetes'
-    },
-    {
-      id: 3,
-      title: 'DESNUTIRICIÓN',
-      image: '/infu3.png',
-      link: '/infographic/infudesnutricion'
     }
   ];
   return (
