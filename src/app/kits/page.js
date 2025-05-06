@@ -39,6 +39,15 @@ export default function kits() {
       link: '/infographic/infudiabetes'
     }
   ];
+
+  const proteinas = [
+    {
+      id: 1,
+      title: 'DESNUTIRICIÓN',
+      image: '/proteina.png',
+      link: '/infographic/infusobrepeso'
+    }
+  ];
   return (
     <div>
       <h1 className={styles.title}>PRODUCTOS</h1>
@@ -51,7 +60,11 @@ export default function kits() {
         title="INFUSIONES" 
         products={infunsiones} 
       />
-      <Footer />            
+      <Carousel 
+        title="Proteína" 
+        products={proteinas} 
+      />
+      <Footer />                
     </div>
   );
 }

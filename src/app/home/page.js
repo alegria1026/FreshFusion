@@ -1,9 +1,8 @@
 import Benefits from "@/app/components/Benefits"
-import Carousel from "@/app/components/ProductCarousel"
+import Carousel from "@/app/components/Carousel"
 import Header from "@/app/components/Header"
 import Footer from "@/app/components/Footer"
 import UsSummary from "@/app/components/UsSummary"
-import ProductCarousel from "@/app/components/ProductCarousel"
 
 
 function Incio() {
@@ -21,7 +20,7 @@ function Incio() {
         {
             id: 3,
             title: 'PROTEINAS',
-            image: '/cat2.jpg'
+            image: '/variasproteinas.png'
         }
     ];
     
