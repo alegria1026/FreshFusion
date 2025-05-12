@@ -28,7 +28,7 @@ function WhatsAppFloat() {
   return (
     <div className={`${styles.whatsappFloat} ${isVisible ? styles.visible : ''}`}>
       <a 
-        href="https://wa.me/9212392763" 
+        href="https://wa.me/c/5219213892763" 
         className={`${styles.whatsappLink} ${isPulsing ? styles.pulse : ''}`}
         aria-label="Ordena por WhatsApp"
         target="_blank"
