@@ -3,6 +3,7 @@ import Carousel from "@/app/components/Carousel"
 import Header from "@/app/components/Header"
 import Footer from "@/app/components/Footer"
 import UsSummary from "@/app/components/UsSummary"
+import WhatsAppFloat from "../components/ WhatsAppFloat"
 
 
 function Incio() {
@@ -10,12 +11,12 @@ function Incio() {
         {
             id: 1,
             title: 'KITS SALUDABLES',
-            image: '/cat1.webp'
+            image: '/cat1.png'
         },
         {
             id: 2,
             title: 'INFUSIONES',
-            image: '/cat2.jpg'
+            image: '/cat2.png'
         },
         {
             id: 3,
@@ -34,6 +35,7 @@ function Incio() {
                 products={products} 
             />
             <Footer></Footer>
+            <WhatsAppFloat/>
         </main>
     )
 }

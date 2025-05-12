@@ -25,7 +25,7 @@ function UsSummary() {
           </a>
         </div>
         <div className={styles.image}>
-          <Image src="/empresa.png" alt="Imagen de la empresa" fill className={styles.img} />
+          <Image src="/empresa.jpeg" alt="Imagen de la empresa" fill className={styles.img} />
         </div>
       </div>
     </section>

@@ -28,7 +28,7 @@ function UsIntroduction() {
         </div>
         <div className={styles.image}>
           <Image 
-            src="/empresa.png" 
+            src="/empresa.jpeg" 
             alt="Equipo FreshFusion" 
             fill
             className={styles.img}
