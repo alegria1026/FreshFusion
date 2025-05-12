@@ -1,3 +1,4 @@
+import WhatsAppFloat from "../components/WhatsAppFloat";
 import Carousel from "../components/Carousel";
 import Footer from "../components/Footer";
 import Menu from "../components/Menu";
@@ -52,6 +53,7 @@ export default function kits() {
     <div>
       <h1 className={styles.title}>PRODUCTOS</h1>
       <Menu />
+      <WhatsAppFloat />
       <Carousel 
         title="KITS" 
         products={kit} 

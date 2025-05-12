@@ -3,7 +3,7 @@ import Carousel from "@/app/components/Carousel"
 import Header from "@/app/components/Header"
 import Footer from "@/app/components/Footer"
 import UsSummary from "@/app/components/UsSummary"
-import WhatsAppFloat from "../components/ WhatsAppFloat"
+import WhatsAppFloat from "../components/WhatsAppFloat"
 
 
 function Incio() {
@@ -28,6 +28,7 @@ function Incio() {
     return (
         <main>
             <Header></Header>
+            <WhatsAppFloat/>
             <UsSummary></UsSummary>
             <Benefits></Benefits>
             <Carousel 
@@ -35,7 +36,6 @@ function Incio() {
                 products={products} 
             />
             <Footer></Footer>
-            <WhatsAppFloat/>
         </main>
     )
 }
