@@ -32,7 +32,7 @@ function Footer() {
             <ul>
               <li><Link href="/" className={styles.menuItem}>Inicio</Link></li>
               <li><Link href="/us" className={styles.menuItem}>Nosotros</Link></li>
-              <li><Link href="/kits" className={styles.menuItem}>Kits</Link></li>
+              <li><Link href="/product" className={styles.menuItem}>Productos</Link></li>
               <li><Link href="/magazine" className={styles.menuItem}>Revista</Link></li>
             </ul>
           </nav>

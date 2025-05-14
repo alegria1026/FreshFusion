@@ -10,19 +10,19 @@ export default function kits() {
       id: 1,
       title: 'SOBREPESO',
       image: '/kit1.png',
-      link: '/infographic/kitsobrepeso'
+      link: '/infographic/kit/overweight'
     },
     {
       id: 2,
       title: 'DIABETES',
       image: '/kit2.png',
-      link: '/infographic/balancebox'
+      link: '/infographic/kit/diabetes'
     },
     {
       id: 3,
       title: 'DESNUTIRICIÓN',
       image: '/kit3.png',
-      link: '/infographic/kitdenutricion'
+      link: '/infographic/kit/malnutrition'
     }
   ];
 
@@ -31,13 +31,13 @@ export default function kits() {
       id: 1,
       title: 'SOBREPESO',
       image: '/infu1.png',
-      link: '/infographic/infusobrepeso'
+      link: '/infographic/infusion/overweight'
     },
     {
       id: 2,
       title: 'DIABETES',
       image: '/infu2.png',
-      link: '/infographic/infudiabetes'
+      link: '/infographic/infusion/diabetes'
     }
   ];
 
@@ -46,7 +46,7 @@ export default function kits() {
       id: 1,
       title: 'DESNUTIRICIÓN',
       image: '/proteina.png',
-      link: '/infographic/infusobrepeso'
+      link: '/infographic/protein/malnutrition'
     }
   ];
   return (
